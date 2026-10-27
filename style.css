@@ -1,0 +1,339 @@
+
+/* ===== 1. Cài đặt chung ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #fff8ef, #ffeaf0);
+    color: #70465a;
+}
+
+button {
+    font: inherit;
+}
+
+.scene {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 35px 20px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #c58b9d;
+    font-weight: 700;
+}
+
+h1 {
+    margin: 12px 0 30px;
+    font-size: clamp(25px, 5vw, 38px);
+}
+
+/* ===== 2. Hộp quà ===== */
+.gift {
+    position: relative;
+    width: 180px;
+    height: 160px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    animation: giftBounce 1.8s ease-in-out infinite;
+    filter: drop-shadow(0 12px 12px #a75d5d22);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.gift-box {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    width: 160px;
+    height: 105px;
+    background: #f28fa7;
+    border-radius: 5px 5px 12px 12px;
+    box-shadow: inset -10px 0 #df7292;
+}
+
+.gift-lid {
+    position: absolute;
+    z-index: 2;
+    top: 32px;
+    left: 0;
+    width: 180px;
+    height: 35px;
+    border-radius: 6px;
+    background: #ffb4c7;
+    transform-origin: 10% 100%;
+    transition: transform 0.8s cubic-bezier(.2, .8, .2, 1);
+}
+
+.ribbon {
+    position: absolute;
+    background: #ffe7a5;
+}
+
+.ribbon-vertical {
+    width: 25px;
+    height: 105px;
+    top: 0;
+    left: 67px;
+}
+
+.ribbon-horizontal {
+    width: 160px;
+    height: 18px;
+    left: 0;
+    top: 39px;
+}
+
+.bow {
+    z-index: 3;
+    top: -22px;
+    left: 72px;
+    width: 36px;
+    height: 26px;
+    background: #ffe7a5;
+    border-radius: 50% 50% 5px 50%;
+    transform: rotate(-35deg);
+}
+
+.bow::after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 0;
+    width: 36px;
+    height: 26px;
+    background: #ffe7a5;
+    border-radius: 50% 50% 50% 5px;
+    transform: rotate(70deg);
+}
+
+/* Rung lắc thu hút sự chú ý */
+@keyframes giftBounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    20% {
+        transform: translateY(-7px) rotate(-3deg);
+    }
+
+    40% {
+        transform: translateY(0) rotate(3deg);
+    }
+
+    60% {
+        transform: translateY(-4px) rotate(-2deg);
+    }
+
+    80% {
+        transform: translateY(0) rotate(1deg);
+    }
+}
+
+/* ===== 3. Khi mở hộp quà ===== */
+.scene.opened .gift {
+    animation: none;
+    pointer-events: none;
+}
+
+.scene.opened .gift-lid {
+    transform: translate(-65px, -75px) rotate(-35deg);
+}
+
+.scene.opened .gift-box {
+    animation: boxGlow 1s ease-in-out;
+}
+
+@keyframes boxGlow {
+    50% {
+        box-shadow: 0 0 35px #ffc95f;
+    }
+}
+
+.hint {
+    margin-top: 24px;
+    font-size: 14px;
+    color: #a77a8a;
+}
+
+/* ===== 4. Hoa hướng dương ===== */
+.flower-container {
+    display: grid;
+    place-items: center;
+    width: 240px;
+    height: 0;
+    opacity: 0;
+    transform: translateY(35px) scale(.3);
+    overflow: hidden;
+    transition:
+        height .1s linear .4s,
+        opacity .8s ease .5s,
+        transform 1s cubic-bezier(.2, .8, .2, 1) .5s;
+}
+
+.sunflower {
+    width: 220px;
+    max-width: 100%;
+    overflow: visible;
+    transform-origin: center bottom;
+}
+
+.petals {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: none;
+}
+
+.scene.opened .flower-container {
+    height: 300px;
+    opacity: 1;
+    overflow: visible;
+    transform: translateY(0) scale(1);
+}
+
+.scene.opened .petals {
+    animation: bloom 1.1s ease-out .8s both;
+}
+
+.scene.opened .sunflower {
+    animation: flowerSway 3s ease-in-out 2s infinite;
+}
+
+@keyframes bloom {
+    from {
+        transform: scale(.15) rotate(-25deg);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes flowerSway {
+    0%, 100% {
+        rotate: -2deg;
+    }
+
+    50% {
+        rotate: 2deg;
+    }
+}
+
+/* ===== 5. Lời chúc ===== */
+.message {
+    max-width: 430px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(15px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease,
+        max-height .8s ease;
+}
+
+.message h2 {
+    color: #cf7992;
+    font-size: 25px;
+}
+
+.message p {
+    line-height: 1.9;
+    font-size: 15px;
+}
+
+.signature {
+    color: #bb7b35;
+    font-weight: 600;
+}
+
+.scene.opened .message {
+    max-height: 400px;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1s;
+}
+
+/* ===== 6. Nút mở lại ===== */
+.replay {
+    margin-top: 20px;
+    padding: 11px 22px;
+    border: 1px solid #e9a2b7;
+    border-radius: 30px;
+    background: #ffffffaa;
+    color: #ad6880;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .5s ease;
+}
+
+.scene.opened .replay {
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: 1.5s;
+}
+
+.replay:hover {
+    background: #ffe1ea;
+}
+
+/* ===== 7. Trang trí nền ===== */
+.sparkles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle, #f7c96a 2px, transparent 3px),
+        radial-gradient(circle, #efb0c4 2px, transparent 3px);
+    background-size: 90px 110px, 130px 150px;
+    background-position: 10px 20px, 50px 70px;
+    opacity: .35;
+    animation: sparkleMove 8s linear infinite;
+}
+
+@keyframes sparkleMove {
+    to {
+        background-position: 100px 120px, 180px 170px;
+    }
+}
+
+@media (max-width: 480px) {
+    .scene {
+        padding: 25px 18px;
+    }
+
+    .flower-container {
+        width: 210px;
+    }
+
+    .scene.opened .flower-container {
+        height: 270px;
+    }
+
+    .sunflower {
+        width: 200px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
