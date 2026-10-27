@@ -5,48 +5,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Đóa hoa dành tặng em 🌸</title>
-    <meta name="description" content="Một đóa hoa nhỏ dành tặng bạn.">
+    <title>Một món quà dành cho bạn 🌻</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
     <main class="scene">
+        <div class="sparkles" aria-hidden="true"></div>
 
-        <!-- Ánh sáng trang trí -->
-        <div class="glow"></div>
+        <p class="subtitle">A LITTLE GIFT FOR YOU</p>
 
-        <!-- Đóa hoa -->
-        <div class="flower">
-            <div class="petals">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+        <h1 id="title">Bạn có một món quà!</h1>
 
-            <div class="center"></div>
+        <!-- Hộp quà -->
+        <button
+            class="gift"
+            id="gift"
+            aria-label="Nhấn để mở hộp quà"
+            aria-expanded="false"
+        >
+            <span class="gift-lid">
+                <span class="ribbon bow"></span>
+            </span>
+
+            <span class="gift-box">
+                <span class="ribbon ribbon-vertical"></span>
+                <span class="ribbon ribbon-horizontal"></span>
+            </span>
+        </button>
+
+        <p class="hint" id="hint">
+            Chạm vào hộp quà để khám phá nhé 💝
+        </p>
+
+        <!-- Đóa hoa hướng dương -->
+        <div class="flower-container" id="flower">
+            <svg
+                class="sunflower"
+                viewBox="0 0 240 310"
+                role="img"
+                aria-label="Đóa hoa hướng dương vàng"
+            >
+                <!-- Thân hoa -->
+                <path
+                    class="stem"
+                    d="M120 135 C118 185 130 220 120 275"
+                    fill="none"
+                    stroke="#43864B"
+                    stroke-width="7"
+                    stroke-linecap="round"
+                />
+
+                <!-- Lá bên trái -->
+                <path
+                    class="leaf"
+                    d="M119 220 Q65 183 62 211 Q83 242 119 220Z"
+                    fill="#5AAB63"
+                />
+
+                <!-- Lá bên phải -->
+                <path
+                    class="leaf"
+                    d="M124 246 Q169 211 179 233 Q163 258 124 246Z"
+                    fill="#43864B"
+                />
+
+                <!-- Cánh hoa -->
+                <g class="petals">
+                    <ellipse cx="120" cy="62" rx="15" ry="32"
+                        fill="#FFD54F"/>
+                    <ellipse cx="120" cy="62" rx="15" ry="32"
+                        fill="#FFCA28" transform="rotate(30 120 105)"/>
+                    <ellipse cx="120" cy="62" rx="15" ry="32"
+                        fill="#FFD54F" transform="rotate(60 120 105)"/>
+                    <ellipse cx="120" cy="62" rx="15" ry="32"
+                        fill="#FFCA28" transform="rotate(90 120 105)"/>
+                    <ellipse cx="120" cy="62" rx="15" ry="32"
+                        fill="#FFD54F" transform="rotate(120 120 105)"/>
+                    <ellipse cx="120" cy="62" rx="15" ry="32"
+                        fill="#FFCA28" transform="rotate(150 120 105)"/>
+                    <ellipse cx="120" cy="62" rx="15" ry="32"
+                        fill="#FFD54F" transform="rotate(180 120 105)"/>
+                    <ellipse cx="120" cy="62" rx="15" ry="32"
+                        fill="#FFCA28" transform="rotate(210 120 105)"/>
+                    <ellipse cx="120" cy="62" rx="15" ry="32"
+                        fill="#FFD54F" transform="rotate(240 120 105)"/>
+                    <ellipse cx="120" cy="62" rx="15" ry="32"
+                        fill="#FFCA28" transform="rotate(270 120 105)"/>
+                    <ellipse cx="120" cy="62" rx="15" ry="32"
+                        fill="#FFD54F" transform="rotate(300 120 105)"/>
+                    <ellipse cx="120" cy="62" rx="15" ry="32"
+                        fill="#FFCA28" transform="rotate(330 120 105)"/>
+                </g>
+
+                <!-- Nhụy hoa -->
+                <circle cx="120" cy="105" r="37" fill="#75421E"/>
+                <circle cx="120" cy="105" r="32" fill="#583019"/>
+
+                <!-- Hạt nhỏ trên nhụy -->
+                <g fill="#D99B42">
+                    <circle cx="106" cy="94" r="2.5"/>
+                    <circle cx="121" cy="88" r="2.5"/>
+                    <circle cx="135" cy="99" r="2.5"/>
+                    <circle cx="111" cy="111" r="2.5"/>
+                    <circle cx="126" cy="116" r="2.5"/>
+                    <circle cx="139" cy="115" r="2.5"/>
+                    <circle cx="118" cy="101" r="2.5"/>
+                    <circle cx="101" cy="105" r="2.5"/>
+                    <circle cx="129" cy="95" r="2.5"/>
+                    <circle cx="114" cy="125" r="2.5"/>
+                    <circle cx="133" cy="126" r="2.5"/>
+                </g>
+            </svg>
         </div>
 
-        <!-- Thân cây -->
-        <div class="stem"></div>
+        <!-- Lời chúc -->
+        <section class="message" id="message" aria-live="polite">
+            <h2>Gửi đến bạn 🌻</h2>
 
-        <!-- Lá cây -->
-        <div class="leaf leaf-left"></div>
-        <div class="leaf leaf-right"></div>
+            <p>
+                Mong bạn luôn vui vẻ, bình an và hạnh phúc.
+                Dù hôm nay có thế nào, hãy luôn mỉm cười
+                và nhớ rằng bạn xứng đáng với những điều
+                tốt đẹp nhất trên thế giới này.
+            </p>
 
-        <!-- Mặt đất -->
-        <div class="ground"></div>
+            <p class="signature">Luôn tỏa sáng như hoa hướng dương ✨</p>
+        </section>
 
-        <!-- Lời nhắn -->
-        <p class="message">Tặng em một đóa hoa 🌸</p>
-        <p class="subtitle">Chúc em sẽ luôn vui vẻ và hạnh phúc. (Đây là bản demo thôi, anh sẽ cải tiến dần dần ạ)</p>
-
+        <button class="replay" id="replay">
+            Mở quà lần nữa ↻
+        </button>
     </main>
 </body>
 </html>
