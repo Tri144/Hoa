@@ -1,0 +1,329 @@
+
+/* =========================
+   1. CẤU HÌNH CHUNG
+========================= */
+
+:root {
+    --petal-light: #fff0f6;
+    --petal-main: #ff78b7;
+    --petal-dark: #e93685;
+
+    --leaf-light: #83e59a;
+    --leaf-dark: #278c50;
+
+    --text-color: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    background: linear-gradient(
+        180deg,
+        #211d46 0%,
+        #604b76 55%,
+        #f3b7c8 100%
+    );
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================
+   2. KHUNG CẢNH
+========================= */
+
+.scene {
+    position: relative;
+    width: 320px;
+    height: 480px;
+    flex-shrink: 0;
+}
+
+.glow {
+    position: absolute;
+    top: 70px;
+    left: 55px;
+    width: 210px;
+    height: 210px;
+
+    background: radial-gradient(
+        circle,
+        #ffb4d830 0%,
+        #ffb4d810 45%,
+        transparent 70%
+    );
+
+    border-radius: 50%;
+}
+
+
+/* =========================
+   3. BÔNG HOA
+========================= */
+
+.flower {
+    position: absolute;
+    top: 90px;
+    left: 110px;
+
+    width: 100px;
+    height: 100px;
+
+    transform-origin: 50% 180%;
+    animation: flower-sway 3s ease-in-out infinite;
+
+    z-index: 2;
+}
+
+.petals {
+    position: absolute;
+    inset: 0;
+}
+
+.petals span {
+    position: absolute;
+    top: 0;
+    left: 35px;
+
+    width: 30px;
+    height: 53px;
+
+    border-radius: 50% 50% 45% 45%;
+
+    background: linear-gradient(
+        180deg,
+        var(--petal-light) 0%,
+        var(--petal-main) 55%,
+        var(--petal-dark) 100%
+    );
+
+    transform-origin: 15px 50px;
+
+    box-shadow: 0 0 12px #ffb4d850;
+}
+
+.petals span:nth-child(1) {
+    transform: rotate(0deg);
+}
+
+.petals span:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.petals span:nth-child(3) {
+    transform: rotate(90deg);
+}
+
+.petals span:nth-child(4) {
+    transform: rotate(135deg);
+}
+
+.petals span:nth-child(5) {
+    transform: rotate(180deg);
+}
+
+.petals span:nth-child(6) {
+    transform: rotate(225deg);
+}
+
+.petals span:nth-child(7) {
+    transform: rotate(270deg);
+}
+
+.petals span:nth-child(8) {
+    transform: rotate(315deg);
+}
+
+
+/* =========================
+   4. NHỤY HOA
+========================= */
+
+.center {
+    position: absolute;
+    top: 36.5px;
+    left: 36.5px;
+
+    width: 27px;
+    height: 27px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        #fff5a8 0%,
+        #ffbb35 55%,
+        #d97916 100%
+    );
+
+    box-shadow: 0 0 15px #ffe89a90;
+}
+
+
+/* =========================
+   5. THÂN CÂY
+========================= */
+
+.stem {
+    position: absolute;
+    top: 180px;
+    left: 157px;
+
+    width: 6px;
+    height: 175px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #24653d,
+        #65c878,
+        #276c3f
+    );
+
+    transform: rotate(4deg);
+    transform-origin: top;
+
+    animation: stem-sway 3s ease-in-out infinite;
+}
+
+
+/* =========================
+   6. LÁ CÂY
+========================= */
+
+.leaf {
+    position: absolute;
+
+    width: 48px;
+    height: 23px;
+
+    border-radius: 100% 0 100% 0;
+
+    background: linear-gradient(
+        135deg,
+        var(--leaf-light),
+        var(--leaf-dark)
+    );
+
+    box-shadow: 0 0 8px #83e59a30;
+}
+
+.leaf-left {
+    top: 270px;
+    left: 112px;
+
+    transform: rotate(15deg);
+}
+
+.leaf-right {
+    top: 230px;
+    left: 159px;
+
+    transform: rotate(-20deg) scaleX(-1);
+}
+
+
+/* =========================
+   7. MẶT ĐẤT
+========================= */
+
+.ground {
+    position: absolute;
+    bottom: 105px;
+    left: 35px;
+
+    width: 250px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: #ffffff25;
+    filter: blur(5px);
+}
+
+
+/* =========================
+   8. CHỮ TRANG TRÍ
+========================= */
+
+.message {
+    position: absolute;
+    top: 365px;
+
+    width: 100%;
+    margin: 0;
+
+    color: var(--text-color);
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+
+    text-shadow: 0 0 12px #ffb4db;
+}
+
+.subtitle {
+    position: absolute;
+    top: 395px;
+
+    width: 100%;
+    margin: 0;
+
+    color: #ffffffd9;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================
+   9. HIỆU ỨNG CHUYỂN ĐỘNG
+========================= */
+
+@keyframes flower-sway {
+    0%, 100% {
+        rotate: -4deg;
+    }
+
+    50% {
+        rotate: 4deg;
+    }
+}
+
+@keyframes stem-sway {
+    0%, 100% {
+        transform: rotate(3deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+
+/* =========================
+   10. ĐIỆN THOẠI
+========================= */
+
+@media (max-width: 360px) {
+    .scene {
+        transform: scale(0.9);
+    }
+}
+
+/* Tôn trọng cài đặt giảm chuyển động */
+@media (prefers-reduced-motion: reduce) {
+    .flower,
+    .stem {
+        animation: none;
+    }
+}
