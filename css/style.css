@@ -1,19 +1,5 @@
 
-/* =========================
-   1. CẤU HÌNH CHUNG
-========================= */
-
-:root {
-    --petal-light: #fff0f6;
-    --petal-main: #ff78b7;
-    --petal-dark: #e93685;
-
-    --leaf-light: #83e59a;
-    --leaf-dark: #278c50;
-
-    --text-color: #ffffff;
-}
-
+/* ===== 1. Cài đặt chung ===== */
 * {
     box-sizing: border-box;
 }
@@ -21,309 +7,333 @@
 body {
     margin: 0;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-
-    background: linear-gradient(
-        180deg,
-        #211d46 0%,
-        #604b76 55%,
-        #f3b7c8 100%
-    );
-
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #fff8ef, #ffeaf0);
+    color: #70465a;
 }
 
-
-/* =========================
-   2. KHUNG CẢNH
-========================= */
+button {
+    font: inherit;
+}
 
 .scene {
     position: relative;
-    width: 320px;
-    height: 480px;
-    flex-shrink: 0;
-}
-
-.glow {
-    position: absolute;
-    top: 70px;
-    left: 55px;
-    width: 210px;
-    height: 210px;
-
-    background: radial-gradient(
-        circle,
-        #ffb4d830 0%,
-        #ffb4d810 45%,
-        transparent 70%
-    );
-
-    border-radius: 50%;
-}
-
-
-/* =========================
-   3. BÔNG HOA
-========================= */
-
-.flower {
-    position: absolute;
-    top: 90px;
-    left: 110px;
-
-    width: 100px;
-    height: 100px;
-
-    transform-origin: 50% 180%;
-    animation: flower-sway 3s ease-in-out infinite;
-
-    z-index: 2;
-}
-
-.petals {
-    position: absolute;
-    inset: 0;
-}
-
-.petals span {
-    position: absolute;
-    top: 0;
-    left: 35px;
-
-    width: 30px;
-    height: 53px;
-
-    border-radius: 50% 50% 45% 45%;
-
-    background: linear-gradient(
-        180deg,
-        var(--petal-light) 0%,
-        var(--petal-main) 55%,
-        var(--petal-dark) 100%
-    );
-
-    transform-origin: 15px 50px;
-
-    box-shadow: 0 0 12px #ffb4d850;
-}
-
-.petals span:nth-child(1) {
-    transform: rotate(0deg);
-}
-
-.petals span:nth-child(2) {
-    transform: rotate(45deg);
-}
-
-.petals span:nth-child(3) {
-    transform: rotate(90deg);
-}
-
-.petals span:nth-child(4) {
-    transform: rotate(135deg);
-}
-
-.petals span:nth-child(5) {
-    transform: rotate(180deg);
-}
-
-.petals span:nth-child(6) {
-    transform: rotate(225deg);
-}
-
-.petals span:nth-child(7) {
-    transform: rotate(270deg);
-}
-
-.petals span:nth-child(8) {
-    transform: rotate(315deg);
-}
-
-
-/* =========================
-   4. NHỤY HOA
-========================= */
-
-.center {
-    position: absolute;
-    top: 36.5px;
-    left: 36.5px;
-
-    width: 27px;
-    height: 27px;
-
-    border-radius: 50%;
-
-    background: radial-gradient(
-        circle,
-        #fff5a8 0%,
-        #ffbb35 55%,
-        #d97916 100%
-    );
-
-    box-shadow: 0 0 15px #ffe89a90;
-}
-
-
-/* =========================
-   5. THÂN CÂY
-========================= */
-
-.stem {
-    position: absolute;
-    top: 180px;
-    left: 157px;
-
-    width: 6px;
-    height: 175px;
-
-    border-radius: 10px;
-
-    background: linear-gradient(
-        90deg,
-        #24653d,
-        #65c878,
-        #276c3f
-    );
-
-    transform: rotate(4deg);
-    transform-origin: top;
-
-    animation: stem-sway 3s ease-in-out infinite;
-}
-
-
-/* =========================
-   6. LÁ CÂY
-========================= */
-
-.leaf {
-    position: absolute;
-
-    width: 48px;
-    height: 23px;
-
-    border-radius: 100% 0 100% 0;
-
-    background: linear-gradient(
-        135deg,
-        var(--leaf-light),
-        var(--leaf-dark)
-    );
-
-    box-shadow: 0 0 8px #83e59a30;
-}
-
-.leaf-left {
-    top: 270px;
-    left: 112px;
-
-    transform: rotate(15deg);
-}
-
-.leaf-right {
-    top: 230px;
-    left: 159px;
-
-    transform: rotate(-20deg) scaleX(-1);
-}
-
-
-/* =========================
-   7. MẶT ĐẤT
-========================= */
-
-.ground {
-    position: absolute;
-    bottom: 105px;
-    left: 35px;
-
-    width: 250px;
-    height: 12px;
-
-    border-radius: 50%;
-
-    background: #ffffff25;
-    filter: blur(5px);
-}
-
-
-/* =========================
-   8. CHỮ TRANG TRÍ
-========================= */
-
-.message {
-    position: absolute;
-    top: 365px;
-
-    width: 100%;
-    margin: 0;
-
-    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 35px 20px;
+    overflow: hidden;
     text-align: center;
-    font-size: 17px;
-    font-weight: bold;
-
-    text-shadow: 0 0 12px #ffb4db;
 }
 
 .subtitle {
-    position: absolute;
-    top: 395px;
-
-    width: 100%;
-    margin: 0;
-
-    color: #ffffffd9;
-    text-align: center;
     font-size: 12px;
-    letter-spacing: 0.5px;
+    letter-spacing: 5px;
+    color: #c58b9d;
+    font-weight: 700;
 }
 
+h1 {
+    margin: 12px 0 30px;
+    font-size: clamp(25px, 5vw, 38px);
+}
 
-/* =========================
-   9. HIỆU ỨNG CHUYỂN ĐỘNG
-========================= */
+/* ===== 2. Hộp quà ===== */
+.gift {
+    position: relative;
+    width: 180px;
+    height: 160px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    animation: giftBounce 1.8s ease-in-out infinite;
+    filter: drop-shadow(0 12px 12px #a75d5d22);
+    -webkit-tap-highlight-color: transparent;
+}
 
-@keyframes flower-sway {
+.gift-box {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    width: 160px;
+    height: 105px;
+    background: #f28fa7;
+    border-radius: 5px 5px 12px 12px;
+    box-shadow: inset -10px 0 #df7292;
+}
+
+.gift-lid {
+    position: absolute;
+    z-index: 2;
+    top: 32px;
+    left: 0;
+    width: 180px;
+    height: 35px;
+    border-radius: 6px;
+    background: #ffb4c7;
+    transform-origin: 10% 100%;
+    transition: transform 0.8s cubic-bezier(.2, .8, .2, 1);
+}
+
+.ribbon {
+    position: absolute;
+    background: #ffe7a5;
+}
+
+.ribbon-vertical {
+    width: 25px;
+    height: 105px;
+    top: 0;
+    left: 67px;
+}
+
+.ribbon-horizontal {
+    width: 160px;
+    height: 18px;
+    left: 0;
+    top: 39px;
+}
+
+.bow {
+    z-index: 3;
+    top: -22px;
+    left: 72px;
+    width: 36px;
+    height: 26px;
+    background: #ffe7a5;
+    border-radius: 50% 50% 5px 50%;
+    transform: rotate(-35deg);
+}
+
+.bow::after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 0;
+    width: 36px;
+    height: 26px;
+    background: #ffe7a5;
+    border-radius: 50% 50% 50% 5px;
+    transform: rotate(70deg);
+}
+
+/* Rung lắc thu hút sự chú ý */
+@keyframes giftBounce {
     0%, 100% {
-        rotate: -4deg;
+        transform: translateY(0) rotate(0);
+    }
+
+    20% {
+        transform: translateY(-7px) rotate(-3deg);
+    }
+
+    40% {
+        transform: translateY(0) rotate(3deg);
+    }
+
+    60% {
+        transform: translateY(-4px) rotate(-2deg);
+    }
+
+    80% {
+        transform: translateY(0) rotate(1deg);
+    }
+}
+
+/* ===== 3. Khi mở hộp quà ===== */
+.scene.opened .gift {
+    animation: none;
+    pointer-events: none;
+}
+
+.scene.opened .gift-lid {
+    transform: translate(-65px, -75px) rotate(-35deg);
+}
+
+.scene.opened .gift-box {
+    animation: boxGlow 1s ease-in-out;
+}
+
+@keyframes boxGlow {
+    50% {
+        box-shadow: 0 0 35px #ffc95f;
+    }
+}
+
+.hint {
+    margin-top: 24px;
+    font-size: 14px;
+    color: #a77a8a;
+}
+
+/* ===== 4. Hoa hướng dương ===== */
+.flower-container {
+    display: grid;
+    place-items: center;
+    width: 240px;
+    height: 0;
+    opacity: 0;
+    transform: translateY(35px) scale(.3);
+    overflow: hidden;
+    transition:
+        height .1s linear .4s,
+        opacity .8s ease .5s,
+        transform 1s cubic-bezier(.2, .8, .2, 1) .5s;
+}
+
+.sunflower {
+    width: 220px;
+    max-width: 100%;
+    overflow: visible;
+    transform-origin: center bottom;
+}
+
+.petals {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: none;
+}
+
+.scene.opened .flower-container {
+    height: 300px;
+    opacity: 1;
+    overflow: visible;
+    transform: translateY(0) scale(1);
+}
+
+.scene.opened .petals {
+    animation: bloom 1.1s ease-out .8s both;
+}
+
+.scene.opened .sunflower {
+    animation: flowerSway 3s ease-in-out 2s infinite;
+}
+
+@keyframes bloom {
+    from {
+        transform: scale(.15) rotate(-25deg);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes flowerSway {
+    0%, 100% {
+        rotate: -2deg;
     }
 
     50% {
-        rotate: 4deg;
+        rotate: 2deg;
     }
 }
 
-@keyframes stem-sway {
-    0%, 100% {
-        transform: rotate(3deg);
-    }
+/* ===== 5. Lời chúc ===== */
+.message {
+    max-width: 430px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(15px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease,
+        max-height .8s ease;
+}
 
-    50% {
-        transform: rotate(5deg);
+.message h2 {
+    color: #cf7992;
+    font-size: 25px;
+}
+
+.message p {
+    line-height: 1.9;
+    font-size: 15px;
+}
+
+.signature {
+    color: #bb7b35;
+    font-weight: 600;
+}
+
+.scene.opened .message {
+    max-height: 400px;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1s;
+}
+
+/* ===== 6. Nút mở lại ===== */
+.replay {
+    margin-top: 20px;
+    padding: 11px 22px;
+    border: 1px solid #e9a2b7;
+    border-radius: 30px;
+    background: #ffffffaa;
+    color: #ad6880;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .5s ease;
+}
+
+.scene.opened .replay {
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: 1.5s;
+}
+
+.replay:hover {
+    background: #ffe1ea;
+}
+
+/* ===== 7. Trang trí nền ===== */
+.sparkles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle, #f7c96a 2px, transparent 3px),
+        radial-gradient(circle, #efb0c4 2px, transparent 3px);
+    background-size: 90px 110px, 130px 150px;
+    background-position: 10px 20px, 50px 70px;
+    opacity: .35;
+    animation: sparkleMove 8s linear infinite;
+}
+
+@keyframes sparkleMove {
+    to {
+        background-position: 100px 120px, 180px 170px;
     }
 }
 
-
-/* =========================
-   10. ĐIỆN THOẠI
-========================= */
-
-@media (max-width: 360px) {
+@media (max-width: 480px) {
     .scene {
-        transform: scale(0.9);
+        padding: 25px 18px;
+    }
+
+    .flower-container {
+        width: 210px;
+    }
+
+    .scene.opened .flower-container {
+        height: 270px;
+    }
+
+    .sunflower {
+        width: 200px;
     }
 }
 
-/* Tôn trọng cài đặt giảm chuyển động */
 @media (prefers-reduced-motion: reduce) {
-    .flower,
-    .stem {
-        animation: none;
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
     }
 }
