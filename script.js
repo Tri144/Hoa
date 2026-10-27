@@ -15,8 +15,8 @@ function openGift() {
     scene.classList.add("opened");
 
     // Cập nhật nội dung hiển thị
-    title.textContent = "Dành tặng bạn một đóa hoa 🌻";
-    hint.textContent = "Mong những điều tốt đẹp sẽ đến với bạn!";
+    title.textContent = "Dành tặng em một đóa hoa 🌻";
+    hint.textContent = "Mong những điều tốt đẹp sẽ đến với em!";
     gift.setAttribute("aria-expanded", "true");
 }
 
@@ -24,7 +24,7 @@ function resetGift() {
     // Xóa class mở quà để trở về trạng thái ban đầu
     scene.classList.remove("opened");
 
-    title.textContent = "Bạn có một món quà!";
+    title.textContent = "Em có một món quà!";
     hint.textContent = "Chạm vào hộp quà để khám phá nhé 💝";
     gift.setAttribute("aria-expanded", "false");
 }
